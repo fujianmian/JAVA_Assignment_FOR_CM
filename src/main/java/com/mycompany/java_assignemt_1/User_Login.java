@@ -3,6 +3,11 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package com.mycompany.java_assignemt_1;
+import javax.swing.JPasswordField;
+
+import java.awt.Image;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -13,6 +18,8 @@ public class User_Login extends javax.swing.JFrame {
     /**
      * Creates new form Login_Page
      */
+    CustomerClass customer = new CustomerClass();
+            
     public User_Login() {
         initComponents();
     }
@@ -31,13 +38,14 @@ public class User_Login extends javax.swing.JFrame {
         jPanel6 = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        BTN_Login = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
+        TXT_LoginPassword = new javax.swing.JTextField();
+        TXT_LoginID = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
+        CB_ShowPassword = new javax.swing.JCheckBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -86,42 +94,74 @@ public class User_Login extends javax.swing.JFrame {
         jPanel5.add(jPanel6);
         jPanel6.setBounds(0, -10, 180, 560);
 
-        jButton1.setBackground(new java.awt.Color(204, 204, 204));
-        jButton1.setText("Login");
-        jButton1.setToolTipText("");
-        jButton1.setBorder(null);
-        jPanel5.add(jButton1);
-        jButton1.setBounds(460, 310, 260, 20);
+        BTN_Login.setBackground(new java.awt.Color(204, 204, 204));
+        BTN_Login.setText("Login");
+        BTN_Login.setToolTipText("");
+        BTN_Login.setBorder(null);
+        BTN_Login.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BTN_LoginActionPerformed(evt);
+            }
+        });
+        jPanel5.add(BTN_Login);
+        BTN_Login.setBounds(460, 310, 260, 20);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI Semilight", 1, 14)); // NOI18N
         jLabel1.setText("Please Login for futher information");
         jPanel5.add(jLabel1);
         jLabel1.setBounds(470, 100, 240, 20);
 
-        jTextField1.setForeground(new java.awt.Color(153, 153, 153));
-        jTextField1.setText("Enter Your Password Here");
-        jPanel5.add(jTextField1);
-        jTextField1.setBounds(460, 210, 260, 30);
+        TXT_LoginPassword.setForeground(new java.awt.Color(153, 153, 153));
+        TXT_LoginPassword.setText("Enter Your Password Here");
+        TXT_LoginPassword.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                TXT_LoginPasswordMouseClicked(evt);
+            }
+        });
+        jPanel5.add(TXT_LoginPassword);
+        TXT_LoginPassword.setBounds(460, 210, 260, 30);
 
-        jTextField2.setForeground(new java.awt.Color(153, 153, 153));
-        jTextField2.setText("Enter Your ID here");
-        jPanel5.add(jTextField2);
-        jTextField2.setBounds(460, 170, 260, 30);
+        TXT_LoginID.setForeground(new java.awt.Color(153, 153, 153));
+        TXT_LoginID.setText("Enter Your ID here");
+        TXT_LoginID.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                TXT_LoginIDMouseClicked(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                TXT_LoginIDMouseExited(evt);
+            }
+        });
+        jPanel5.add(TXT_LoginID);
+        TXT_LoginID.setBounds(460, 170, 260, 30);
 
         jLabel2.setForeground(new java.awt.Color(0, 153, 204));
         jLabel2.setText("Forgot Pasword");
         jPanel5.add(jLabel2);
-        jLabel2.setBounds(610, 340, 90, 16);
+        jLabel2.setBounds(610, 340, 100, 16);
 
         jLabel4.setForeground(new java.awt.Color(0, 153, 204));
         jLabel4.setText("Register Here");
+        jLabel4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel4MouseClicked(evt);
+            }
+        });
         jPanel5.add(jLabel4);
-        jLabel4.setBounds(490, 340, 70, 16);
+        jLabel4.setBounds(490, 340, 80, 16);
 
         jLabel5.setFont(new java.awt.Font("Segoe UI Semilight", 1, 24)); // NOI18N
         jLabel5.setText("Welcome to Hall Syphony");
         jPanel5.add(jLabel5);
         jLabel5.setBounds(450, 50, 290, 50);
+
+        CB_ShowPassword.setText("Show Password");
+        CB_ShowPassword.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CB_ShowPasswordActionPerformed(evt);
+            }
+        });
+        jPanel5.add(CB_ShowPassword);
+        CB_ShowPassword.setBounds(460, 240, 240, 20);
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -147,6 +187,43 @@ public class User_Login extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void TXT_LoginIDMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TXT_LoginIDMouseClicked
+        TXT_LoginID.setText("");
+    }//GEN-LAST:event_TXT_LoginIDMouseClicked
+
+    private void TXT_LoginPasswordMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TXT_LoginPasswordMouseClicked
+        TXT_LoginPassword.setText("");
+    }//GEN-LAST:event_TXT_LoginPasswordMouseClicked
+
+    private void TXT_LoginIDMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TXT_LoginIDMouseExited
+            
+    }//GEN-LAST:event_TXT_LoginIDMouseExited
+
+    private void CB_ShowPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CB_ShowPasswordActionPerformed
+        JPasswordField password = new JPasswordField(8);
+        password.setEchoChar('#');
+    }//GEN-LAST:event_CB_ShowPasswordActionPerformed
+
+    private void BTN_LoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_LoginActionPerformed
+        String UserName;
+        String UserPass;
+        boolean found;
+            
+        UserName = TXT_LoginID.getText();
+        UserPass = TXT_LoginPassword.getText();
+        
+        try {
+            found = customer.FindSpecificCus(UserName, UserPass);
+        } catch (Exception ex) {
+            Logger.getLogger(User_CustomerService.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_BTN_LoginActionPerformed
+
+    private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
+        User_Register userLoginFrame = new User_Register();
+        userLoginFrame.setVisible(true);
+    }//GEN-LAST:event_jLabel4MouseClicked
 
     /**
      * @param args the command line arguments
@@ -311,7 +388,10 @@ public class User_Login extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton BTN_Login;
+    private javax.swing.JCheckBox CB_ShowPassword;
+    private javax.swing.JTextField TXT_LoginID;
+    private javax.swing.JTextField TXT_LoginPassword;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
@@ -321,7 +401,5 @@ public class User_Login extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
     // End of variables declaration//GEN-END:variables
 }
