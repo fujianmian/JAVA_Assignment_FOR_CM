@@ -216,7 +216,6 @@ public class User_Login extends javax.swing.JFrame {
         try {
             found = customer.FindSpecificCus(UserName, UserPass);
         } catch (Exception ex) {
-            Logger.getLogger(User_CustomerService.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_BTN_LoginActionPerformed
 
