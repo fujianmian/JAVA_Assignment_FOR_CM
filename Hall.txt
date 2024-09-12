@@ -1,0 +1,9 @@
+H001,Auditorium,1000,300
+H002,Auditorium,1000,300
+H003,Auditorium,1000,300
+H004,Banquet Hall,300,100
+H005,Banquet Hall,300,100
+H006,Banquet Hall,300,100
+H007,Meeting,30,50
+H008,Meeting,30,50
+H009,Meeting,30,50
