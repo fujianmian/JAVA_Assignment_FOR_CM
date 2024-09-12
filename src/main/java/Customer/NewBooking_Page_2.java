@@ -286,12 +286,9 @@ public class NewBooking_Page_2 extends javax.swing.JFrame {
         jLabel8.setText("No. of People");
         jPanel2.add(jLabel8);
         jLabel8.setBounds(210, 320, 90, 20);
-
-        TXT_NoOfPeople.setText("12");
         jPanel2.add(TXT_NoOfPeople);
         TXT_NoOfPeople.setBounds(210, 340, 170, 22);
 
-        TXT_EndDate.setText("2024-12-13");
         TXT_EndDate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 TXT_EndDateActionPerformed(evt);
@@ -299,8 +296,6 @@ public class NewBooking_Page_2 extends javax.swing.JFrame {
         });
         jPanel2.add(TXT_EndDate);
         TXT_EndDate.setBounds(580, 290, 170, 22);
-
-        TXT_StartDate.setText("2024-12-12");
         jPanel2.add(TXT_StartDate);
         TXT_StartDate.setBounds(400, 290, 170, 22);
 
@@ -323,7 +318,6 @@ public class NewBooking_Page_2 extends javax.swing.JFrame {
         jPanel2.add(jLabel15);
         jLabel15.setBounds(400, 320, 80, 20);
 
-        TXT_EndTime.setText("12:00:00");
         TXT_EndTime.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 TXT_EndTimeActionPerformed(evt);
@@ -520,7 +514,7 @@ public class NewBooking_Page_2 extends javax.swing.JFrame {
         } catch (Exception ex) {
             Logger.getLogger(NewBooking_Page_2.class.getName()).log(Level.SEVERE, null, ex);
         }
-        System.out.println("Empty_Slot: " + Empty_Slot);
+//        System.out.println("Empty_Slot: " + Empty_Slot);
         
         String bookID = null;
         try {
@@ -529,7 +523,7 @@ public class NewBooking_Page_2 extends javax.swing.JFrame {
             Logger.getLogger(NewBooking_Page_2.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-        System.out.println(bookID);
+//        System.out.println(bookID);
         
         if(Empty_Slot){
             
@@ -553,7 +547,9 @@ public class NewBooking_Page_2 extends javax.swing.JFrame {
             }
 
             
-        }else{System.out.println("No");}
+        }else{
+//            System.out.println("No");
+        }
         
        
     }//GEN-LAST:event_btn_Booking1ActionPerformed

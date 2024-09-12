@@ -37,7 +37,7 @@ public class ViewBooking_Page extends javax.swing.JFrame {
         try {
                 // Catch the exception thrown by getBookingsByCustomerID
                 List<Booking_Class> bookings = F.getBookingsByCustomerID(customerID);
-                System.out.println("Number of bookings found: " + bookings.size());
+//                System.out.println("Number of bookings found: " + bookings.size());
 
                 DefaultTableModel model = (DefaultTableModel) Tbl_MyBooking.getModel();
                 DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
@@ -51,12 +51,12 @@ public class ViewBooking_Page extends javax.swing.JFrame {
                         booking.getEndDateTime().format(formatter)
                     };
                     model.addRow(rowData);
-                    System.out.println("Added booking: " + booking);
+//                    System.out.println("Added booking: " + booking);
                 }
             } catch (Exception ex) {
                 // Log the exception
                 Logger.getLogger(ViewBooking_Page.class.getName()).log(Level.SEVERE, null, ex);
-                System.out.println("An error occurred: " + ex.getMessage());
+//                System.out.println("An error occurred: " + ex.getMessage());
             }
         
         
@@ -404,7 +404,7 @@ public class ViewBooking_Page extends javax.swing.JFrame {
             try {
                 // Catch the exception thrown by getBookingsByCustomerID
                 List<Booking_Class> bookings = F.getBookingsByCustomerID(customerID);
-                System.out.println("Number of bookings found: " + bookings.size());
+//                System.out.println("Number of bookings found: " + bookings.size());
 
                 DefaultTableModel model = (DefaultTableModel) Tbl_MyBooking.getModel();
                 DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
@@ -418,12 +418,12 @@ public class ViewBooking_Page extends javax.swing.JFrame {
                         booking.getEndDateTime().format(formatter)
                     };
                     model.addRow(rowData);
-                    System.out.println("Added booking: " + booking);
+//                    System.out.println("Added booking: " + booking);
                 }
             } catch (Exception ex) {
                 // Log the exception
                 Logger.getLogger(ViewBooking_Page.class.getName()).log(Level.SEVERE, null, ex);
-                System.out.println("An error occurred: " + ex.getMessage());
+//                System.out.println("An error occurred: " + ex.getMessage());
             }
         }
         if ("Past".equals(CBox)){
@@ -458,7 +458,7 @@ public class ViewBooking_Page extends javax.swing.JFrame {
             } catch (Exception ex) {
                 // Log the exception
                 Logger.getLogger(ViewBooking_Page.class.getName()).log(Level.SEVERE, null, ex);
-                System.out.println("An error occurred: " + ex.getMessage());
+//                System.out.println("An error occurred: " + ex.getMessage());
             }
 
         }

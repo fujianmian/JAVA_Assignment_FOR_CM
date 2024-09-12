@@ -28,7 +28,7 @@ public class Payment_Page extends javax.swing.JFrame {
     public Payment_Page(String data) throws Exception {
         initComponents();
         Payment_Page.Data = data;
-        System.out.println(Payment_Page.Data);
+//        System.out.println(Payment_Page.Data);
         
         String[] values = Payment_Page.Data.split(",");
         if (values.length < 1) {

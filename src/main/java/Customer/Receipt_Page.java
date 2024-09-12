@@ -206,7 +206,7 @@ public class Receipt_Page extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void Btn_BackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_BackActionPerformed
-        System.out.println(Receipt_Page.Data);
+//        System.out.println(Receipt_Page.Data);
         
         try {
             NewBooking_Page_2 Frame = new NewBooking_Page_2(Receipt_Page.Data);

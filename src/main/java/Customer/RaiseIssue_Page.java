@@ -419,9 +419,10 @@ public class RaiseIssue_Page extends javax.swing.JFrame {
             
             HandleCustomerFeedback HCF = new HandleCustomerFeedback();
             String FeedbackData = HCF.handlecustomercomment(CusID, Title, customerID, feedbackdatetime, HAllID, IssueContent);
-            System.out.println(FeedbackData);
+//            System.out.println(FeedbackData);
             try {
                 F.TOWriteFile("Feedback.txt", FeedbackData);
+                JOptionPane.showMessageDialog(null, "Your Feedback had been submitted, thanks for your feedback");
             } catch (IOException ex) {
                 Logger.getLogger(RaiseIssue_Page.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -466,9 +467,10 @@ public class RaiseIssue_Page extends javax.swing.JFrame {
             
             HandleCustomerFeedback HCF = new HandleCustomerFeedback();
             String FeedbackData = HCF.handlecustomercomment(CusID, Title, customerID, feedbackdatetime, HAllID, IssueContent);
-            System.out.println(FeedbackData);
+//            System.out.println(FeedbackData);
             try {
                 F.TOWriteFile("Feedback.txt", FeedbackData);
+                JOptionPane.showMessageDialog(null, "Your Issue had been submitted, thanks for your feedback");
             } catch (IOException ex) {
                 Logger.getLogger(RaiseIssue_Page.class.getName()).log(Level.SEVERE, null, ex);
             }

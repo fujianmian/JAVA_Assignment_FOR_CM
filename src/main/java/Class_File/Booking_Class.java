@@ -50,7 +50,7 @@ public class Booking_Class {
                 LocalDateTime existingStart = Booking.getStartDateTime();
                 LocalDateTime existingEnd = Booking.getEndDateTime();
                 
-                System.out.println("If you see this, then it go well");
+//                System.out.println("If you see this, then it go well");
 
                 // Overlap condition: (new start < existing end) and (new end > existing start)
                 if (startdatetime.isBefore(existingEnd) && enddatetime.isAfter(existingStart)) {
@@ -69,19 +69,19 @@ public class Booking_Class {
         List<Booking_Class> customerBookings = F.getBookingsByCustomerID(customerID);
 
         // Debugging statement
-        System.out.println("Checking for bookingID: " + bookingID + " in customerID: " + customerID + "'s bookings.");
+//        System.out.println("Checking for bookingID: " + bookingID + " in customerID: " + customerID + "'s bookings.");
 
         // Loop through the customer's bookings to find a match
         for (Booking_Class booking : customerBookings) {
-            System.out.println("Checking booking: " + booking.getBooking_ID());
+//            System.out.println("Checking booking: " + booking.getBooking_ID());
             if (booking.getBooking_ID().equalsIgnoreCase(bookingID.trim())) {
-                System.out.println("Booking found: " + bookingID);
+//                System.out.println("Booking found: " + bookingID);
                 return true; // Booking found, return true
             }
         }
 
         // No match found
-        System.out.println("Booking not found: " + bookingID);
+//        System.out.println("Booking not found: " + bookingID);
         return false; // Booking not found, return false
     }
     
@@ -108,13 +108,13 @@ public class Booking_Class {
         List<Booking_Class> allBookings = F.getAllBooking();
 
         // Debugging statement
-        System.out.println("Searching for bookingID: " + bookingID);
+//        System.out.println("Searching for bookingID: " + bookingID);
 
         // Loop through the bookings to find the matching bookingID
         for (Booking_Class booking : allBookings) {
-            System.out.println("Checking booking: " + booking.getBooking_ID());
+//            System.out.println("Checking booking: " + booking.getBooking_ID());
             if (booking.getBooking_ID().equalsIgnoreCase(bookingID.trim())) {
-                System.out.println("Booking found. Hall ID: " + booking.getHall_1().getHall_ID());
+//                System.out.println("Booking found. Hall ID: " + booking.getHall_1().getHall_ID());
                 return booking.getHall_1().getHall_ID(); // Return the hall ID
             }
         }
@@ -133,10 +133,10 @@ public class Booking_Class {
 
         // Debugging: Print all bookings and halls
 
-        System.out.println("Available halls:");
-        for (HallClass hall : halls) {
-            System.out.println("Hall ID: " + hall.getHall_ID());
-        }
+//        System.out.println("Available halls:");
+//        for (HallClass hall : halls) {
+//            System.out.println("Hall ID: " + hall.getHall_ID());
+//        }
 
 
         // Find the hall by ID
@@ -157,9 +157,9 @@ public class Booking_Class {
 
         // Debugging: Print selected booking and hall
 //        System.out.println("Selected Booking ID: " + selectedBooking.getBooking_ID());
-        System.out.println("Selected Hall ID: " + selectedHall.getHall_ID());
-        System.out.println("Selected Hall Price: " + selectedHall.getPrice());
-        System.out.println("Booking duration in hours: " + hours);
+//        System.out.println("Selected Hall ID: " + selectedHall.getHall_ID());
+//        System.out.println("Selected Hall Price: " + selectedHall.getPrice());
+//        System.out.println("Booking duration in hours: " + hours);
 
         // Calculate the cost
         double cost = hours * selectedHall.getPrice();
