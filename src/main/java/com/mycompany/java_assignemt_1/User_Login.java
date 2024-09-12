@@ -3,9 +3,14 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package com.mycompany.java_assignemt_1;
+import Class_File.CustomerClass;
+import Class_File.FILE_IO;
+import Customer.NewBooking_Page_2;
 import javax.swing.JPasswordField;
 
+
 import java.awt.Image;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -18,8 +23,8 @@ public class User_Login extends javax.swing.JFrame {
     /**
      * Creates new form Login_Page
      */
-    CustomerClass customer = new CustomerClass();
             
+    
     public User_Login() {
         initComponents();
     }
@@ -45,7 +50,6 @@ public class User_Login extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        CB_ShowPassword = new javax.swing.JCheckBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -154,15 +158,6 @@ public class User_Login extends javax.swing.JFrame {
         jPanel5.add(jLabel5);
         jLabel5.setBounds(450, 50, 290, 50);
 
-        CB_ShowPassword.setText("Show Password");
-        CB_ShowPassword.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CB_ShowPasswordActionPerformed(evt);
-            }
-        });
-        jPanel5.add(CB_ShowPassword);
-        CB_ShowPassword.setBounds(460, 240, 240, 20);
-
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
@@ -200,28 +195,49 @@ public class User_Login extends javax.swing.JFrame {
             
     }//GEN-LAST:event_TXT_LoginIDMouseExited
 
-    private void CB_ShowPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CB_ShowPasswordActionPerformed
-        JPasswordField password = new JPasswordField(8);
-        password.setEchoChar('#');
-    }//GEN-LAST:event_CB_ShowPasswordActionPerformed
-
     private void BTN_LoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_LoginActionPerformed
-        String UserName;
+        String UserID;
         String UserPass;
-        boolean found;
+        boolean found = false;
             
-        UserName = TXT_LoginID.getText();
+        UserID = TXT_LoginID.getText();
         UserPass = TXT_LoginPassword.getText();
         
+        CustomerClass customer = new CustomerClass(null, null, null, null, null);
+        
         try {
-            found = customer.FindSpecificCus(UserName, UserPass);
+            found = customer.FindSpecificCus(UserID, UserPass);
         } catch (Exception ex) {
+            Logger.getLogger(User_Login.class.getName()).log(Level.SEVERE, null, ex);
+        }
+         
+        if(found){
+            String UserTYPE = null;
+            try {
+                UserTYPE = customer.getUserTYPE(UserID);
+            } catch (Exception ex) {
+                Logger.getLogger(User_Login.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+            switch(UserTYPE){
+                case "C":
+                    try {
+                        NewBooking_Page_2 BookingFrame2 = new NewBooking_Page_2(UserID);
+                        BookingFrame2.setVisible(true);
+                        this.dispose();
+                        break;
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+            }
+            
         }
     }//GEN-LAST:event_BTN_LoginActionPerformed
 
     private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
-        User_Register userLoginFrame = new User_Register();
-        userLoginFrame.setVisible(true);
+        User_Register userRegisterFrame = new User_Register();
+        userRegisterFrame.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_jLabel4MouseClicked
 
     /**
@@ -388,7 +404,6 @@ public class User_Login extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BTN_Login;
-    private javax.swing.JCheckBox CB_ShowPassword;
     private javax.swing.JTextField TXT_LoginID;
     private javax.swing.JTextField TXT_LoginPassword;
     private javax.swing.JLabel jLabel1;

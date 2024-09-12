@@ -35,7 +35,6 @@ public class User_Register extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         TXT_RegisterPassword2 = new javax.swing.JTextField();
         TXT_RegisterName = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         TXT_RegisterEmail = new javax.swing.JTextField();
@@ -89,6 +88,11 @@ public class User_Register extends javax.swing.JFrame {
         jPanel6.setBounds(0, -10, 180, 560);
 
         jButton1.setText("Register");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
         jPanel5.add(jButton1);
         jButton1.setBounds(460, 350, 260, 20);
 
@@ -112,15 +116,15 @@ public class User_Register extends javax.swing.JFrame {
         jPanel5.add(TXT_RegisterName);
         TXT_RegisterName.setBounds(460, 170, 260, 30);
 
-        jLabel2.setForeground(new java.awt.Color(0, 153, 204));
-        jLabel2.setText("Forgot Pasword");
-        jPanel5.add(jLabel2);
-        jLabel2.setBounds(610, 380, 90, 16);
-
         jLabel4.setForeground(new java.awt.Color(0, 153, 204));
         jLabel4.setText("Login Here");
+        jLabel4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel4MouseClicked(evt);
+            }
+        });
         jPanel5.add(jLabel4);
-        jLabel4.setBounds(490, 380, 70, 16);
+        jLabel4.setBounds(560, 380, 70, 16);
 
         jLabel5.setFont(new java.awt.Font("Segoe UI Semilight", 1, 24)); // NOI18N
         jLabel5.setText("Welcome to Hall Syphony");
@@ -174,6 +178,16 @@ public class User_Register extends javax.swing.JFrame {
     private void TXT_RegisterEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TXT_RegisterEmailActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_TXT_RegisterEmailActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
+        User_Login LoginFrame = new User_Login();
+        LoginFrame.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jLabel4MouseClicked
 
     /**
      * @param args the command line arguments
@@ -280,7 +294,6 @@ public class User_Register extends javax.swing.JFrame {
     private javax.swing.JTextField TXT_RegisterPassword2;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel8;

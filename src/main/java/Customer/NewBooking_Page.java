@@ -2,18 +2,20 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package Admin;
+package Customer;
+
+import Admin.*;
 
 /**
  *
  * @author siowa
  */
-public class Profile_Page extends javax.swing.JFrame {
+public class NewBooking_Page extends javax.swing.JFrame {
 
     /**
      * Creates new form Profile_Page
      */
-    public Profile_Page() {
+    public NewBooking_Page() {
         initComponents();
     }
 
@@ -45,22 +47,17 @@ public class Profile_Page extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jCheckBox2 = new javax.swing.JCheckBox();
-        txt_Password = new javax.swing.JPasswordField();
-        jCheckBox1 = new javax.swing.JCheckBox();
-        txt_ConfirmPassword = new javax.swing.JPasswordField();
-        combo_UserType = new javax.swing.JComboBox<>();
         txt_Email = new javax.swing.JTextField();
-        txt_FullName = new javax.swing.JTextField();
-        txt_StaffID = new javax.swing.JTextField();
-        btn_UpdateProfile = new javax.swing.JButton();
+        TXT_EndDate = new javax.swing.JTextField();
+        TXT_StartDate = new javax.swing.JTextField();
+        btn_SearchAvailableHall = new javax.swing.JButton();
         btn_Save = new javax.swing.JButton();
+        TXT_StartTime = new javax.swing.JTextField();
+        jLabel15 = new javax.swing.JLabel();
+        TXT_EndTime = new javax.swing.JTextField();
+        jLabel16 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(1000, 500));
 
         jPanel1.setPreferredSize(new java.awt.Dimension(1000, 500));
 
@@ -82,7 +79,7 @@ public class Profile_Page extends javax.swing.JFrame {
 
         jLabel14.setBackground(new java.awt.Color(102, 102, 102));
         jLabel14.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel14.setText("Profile");
+        jLabel14.setText("New Booking");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -103,7 +100,7 @@ public class Profile_Page extends javax.swing.JFrame {
 
         jLabel9.setBackground(new java.awt.Color(51, 51, 51));
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel9.setText("Staff Management");
+        jLabel9.setText("My Booking");
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -124,7 +121,7 @@ public class Profile_Page extends javax.swing.JFrame {
 
         jLabel11.setBackground(new java.awt.Color(51, 51, 51));
         jLabel11.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel11.setText("User Management");
+        jLabel11.setText("Raise Issue");
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -145,7 +142,7 @@ public class Profile_Page extends javax.swing.JFrame {
 
         jLabel12.setBackground(new java.awt.Color(51, 51, 51));
         jLabel12.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel12.setText("Booking Management");
+        jLabel12.setText("My Profile");
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
@@ -225,77 +222,62 @@ public class Profile_Page extends javax.swing.JFrame {
         jPanel6.setBounds(0, 0, 170, 470);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI Emoji", 1, 36)); // NOI18N
-        jLabel1.setText("Profile");
+        jLabel1.setText("Booking");
         jPanel2.add(jLabel1);
-        jLabel1.setBounds(440, 20, 120, 50);
+        jLabel1.setBounds(420, 20, 150, 50);
 
         jLabel6.setFont(new java.awt.Font("Eras Demi ITC", 0, 12)); // NOI18N
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel6.setText("Staff ID");
+        jLabel6.setText("Start Date");
         jPanel2.add(jLabel6);
-        jLabel6.setBounds(340, 90, 60, 20);
+        jLabel6.setBounds(270, 110, 80, 20);
 
         jLabel7.setFont(new java.awt.Font("Eras Demi ITC", 0, 12)); // NOI18N
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel7.setText("Full Name");
+        jLabel7.setText("End Date");
         jPanel2.add(jLabel7);
-        jLabel7.setBounds(340, 130, 60, 20);
+        jLabel7.setBounds(530, 110, 60, 20);
 
         jLabel8.setFont(new java.awt.Font("Eras Demi ITC", 0, 12)); // NOI18N
         jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel8.setText("Email");
+        jLabel8.setText("No. of People");
         jPanel2.add(jLabel8);
-        jLabel8.setBounds(340, 170, 40, 20);
-
-        jLabel4.setFont(new java.awt.Font("Eras Demi ITC", 0, 12)); // NOI18N
-        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel4.setText("User Type");
-        jPanel2.add(jLabel4);
-        jLabel4.setBounds(340, 210, 70, 20);
-
-        jLabel2.setFont(new java.awt.Font("Eras Demi ITC", 0, 12)); // NOI18N
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel2.setText("Confirm Password");
-        jPanel2.add(jLabel2);
-        jLabel2.setBounds(340, 250, 110, 20);
-
-        jLabel5.setFont(new java.awt.Font("Eras Demi ITC", 0, 12)); // NOI18N
-        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel5.setText("Password");
-        jPanel2.add(jLabel5);
-        jLabel5.setBounds(340, 300, 60, 20);
-
-        jCheckBox2.setFont(new java.awt.Font("Segoe UI Symbol", 0, 10)); // NOI18N
-        jCheckBox2.setText("Show Password");
-        jPanel2.add(jCheckBox2);
-        jCheckBox2.setBounds(450, 320, 110, 20);
-        jPanel2.add(txt_Password);
-        txt_Password.setBounds(450, 300, 170, 22);
-
-        jCheckBox1.setFont(new java.awt.Font("Segoe UI Symbol", 0, 10)); // NOI18N
-        jCheckBox1.setText("Show Password");
-        jPanel2.add(jCheckBox1);
-        jCheckBox1.setBounds(450, 270, 110, 20);
-        jPanel2.add(txt_ConfirmPassword);
-        txt_ConfirmPassword.setBounds(450, 250, 170, 22);
-
-        combo_UserType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "User Type", "Admin", "Scheduler", "Manager" }));
-        jPanel2.add(combo_UserType);
-        combo_UserType.setBounds(450, 210, 170, 22);
+        jLabel8.setBounds(270, 250, 90, 20);
         jPanel2.add(txt_Email);
-        txt_Email.setBounds(450, 170, 170, 22);
-        jPanel2.add(txt_FullName);
-        txt_FullName.setBounds(450, 130, 170, 22);
-        jPanel2.add(txt_StaffID);
-        txt_StaffID.setBounds(450, 90, 170, 22);
+        txt_Email.setBounds(270, 280, 170, 22);
+        jPanel2.add(TXT_EndDate);
+        TXT_EndDate.setBounds(530, 140, 170, 22);
+        jPanel2.add(TXT_StartDate);
+        TXT_StartDate.setBounds(270, 140, 170, 22);
 
-        btn_UpdateProfile.setText("Update Profile");
-        jPanel2.add(btn_UpdateProfile);
-        btn_UpdateProfile.setBounds(620, 370, 110, 30);
+        btn_SearchAvailableHall.setText("Search");
+        btn_SearchAvailableHall.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_SearchAvailableHallActionPerformed(evt);
+            }
+        });
+        jPanel2.add(btn_SearchAvailableHall);
+        btn_SearchAvailableHall.setBounds(620, 370, 110, 30);
 
         btn_Save.setText("Save");
         jPanel2.add(btn_Save);
         btn_Save.setBounds(620, 370, 110, 30);
+        jPanel2.add(TXT_StartTime);
+        TXT_StartTime.setBounds(270, 210, 170, 22);
+
+        jLabel15.setFont(new java.awt.Font("Eras Demi ITC", 0, 12)); // NOI18N
+        jLabel15.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel15.setText("Start Time");
+        jPanel2.add(jLabel15);
+        jLabel15.setBounds(270, 180, 80, 20);
+        jPanel2.add(TXT_EndTime);
+        TXT_EndTime.setBounds(530, 210, 170, 22);
+
+        jLabel16.setFont(new java.awt.Font("Eras Demi ITC", 0, 12)); // NOI18N
+        jLabel16.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel16.setText("End Time");
+        jPanel2.add(jLabel16);
+        jLabel16.setBounds(530, 180, 60, 20);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -322,6 +304,10 @@ public class Profile_Page extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btn_SearchAvailableHallActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_SearchAvailableHallActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_SearchAvailableHallActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -339,40 +325,43 @@ public class Profile_Page extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Profile_Page.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(NewBooking_Page.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Profile_Page.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(NewBooking_Page.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Profile_Page.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(NewBooking_Page.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Profile_Page.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(NewBooking_Page.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Profile_Page().setVisible(true);
+                new NewBooking_Page().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField TXT_EndDate;
+    private javax.swing.JTextField TXT_EndTime;
+    private javax.swing.JTextField TXT_StartDate;
+    private javax.swing.JTextField TXT_StartTime;
     private javax.swing.JButton btn_Save;
-    private javax.swing.JButton btn_UpdateProfile;
-    private javax.swing.JComboBox<String> combo_UserType;
-    private javax.swing.JCheckBox jCheckBox1;
-    private javax.swing.JCheckBox jCheckBox2;
+    private javax.swing.JButton btn_SearchAvailableHall;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
@@ -385,10 +374,6 @@ public class Profile_Page extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
-    private javax.swing.JPasswordField txt_ConfirmPassword;
     private javax.swing.JTextField txt_Email;
-    private javax.swing.JTextField txt_FullName;
-    private javax.swing.JPasswordField txt_Password;
-    private javax.swing.JTextField txt_StaffID;
     // End of variables declaration//GEN-END:variables
 }

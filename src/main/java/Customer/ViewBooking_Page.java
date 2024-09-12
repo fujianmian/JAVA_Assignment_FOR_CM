@@ -2,19 +2,64 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package Admin;
+package Customer;
+
+import Admin.*;
+import Class_File.Booking_Class;
+import Class_File.FILE_IO;
+import Class_File.HallClass;
+import java.io.IOException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author siowa
  */
-public class Profile_Page extends javax.swing.JFrame {
+
+
+public class ViewBooking_Page extends javax.swing.JFrame {
 
     /**
      * Creates new form Profile_Page
      */
-    public Profile_Page() {
+    private String customerID;
+    public ViewBooking_Page(String customerID) throws Exception {
+        this.customerID = customerID;
         initComponents();
+        FILE_IO F = new FILE_IO();
+        try {
+                // Catch the exception thrown by getBookingsByCustomerID
+                List<Booking_Class> bookings = F.getBookingsByCustomerID(customerID);
+                System.out.println("Number of bookings found: " + bookings.size());
+
+                DefaultTableModel model = (DefaultTableModel) Tbl_MyBooking.getModel();
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+                model.setRowCount(0);
+
+                // 将每个 Hall 数据添加到表格中
+                for (Booking_Class booking : bookings) {
+                    Object[] rowData = {
+                        booking.getBooking_ID(),
+                        booking.getStartDateTime().format(formatter),
+                        booking.getEndDateTime().format(formatter)
+                    };
+                    model.addRow(rowData);
+                    System.out.println("Added booking: " + booking);
+                }
+            } catch (Exception ex) {
+                // Log the exception
+                Logger.getLogger(ViewBooking_Page.class.getName()).log(Level.SEVERE, null, ex);
+                System.out.println("An error occurred: " + ex.getMessage());
+            }
+        
+        
     }
 
     /**
@@ -42,25 +87,15 @@ public class Profile_Page extends javax.swing.JFrame {
         jPanel8 = new javax.swing.JPanel();
         jLabel13 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        Tbl_MyBooking = new javax.swing.JTable();
+        CB_Filter = new javax.swing.JComboBox<>();
+        Txt_BID_ToDelete = new javax.swing.JTextField();
+        Btn_Delete = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jCheckBox2 = new javax.swing.JCheckBox();
-        txt_Password = new javax.swing.JPasswordField();
-        jCheckBox1 = new javax.swing.JCheckBox();
-        txt_ConfirmPassword = new javax.swing.JPasswordField();
-        combo_UserType = new javax.swing.JComboBox<>();
-        txt_Email = new javax.swing.JTextField();
-        txt_FullName = new javax.swing.JTextField();
-        txt_StaffID = new javax.swing.JTextField();
-        btn_UpdateProfile = new javax.swing.JButton();
-        btn_Save = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(1000, 500));
 
         jPanel1.setPreferredSize(new java.awt.Dimension(1000, 500));
 
@@ -78,11 +113,16 @@ public class Profile_Page extends javax.swing.JFrame {
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Dashboard");
 
-        jPanel3.setBackground(new java.awt.Color(102, 102, 102));
+        jPanel3.setBackground(new java.awt.Color(153, 153, 153));
 
-        jLabel14.setBackground(new java.awt.Color(102, 102, 102));
+        jLabel14.setBackground(new java.awt.Color(153, 153, 153));
         jLabel14.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel14.setText("Profile");
+        jLabel14.setText("New Booking");
+        jLabel14.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel14MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -99,11 +139,11 @@ public class Profile_Page extends javax.swing.JFrame {
                 .addGap(0, 2, Short.MAX_VALUE))
         );
 
-        jPanel4.setBackground(new java.awt.Color(153, 153, 153));
+        jPanel4.setBackground(new java.awt.Color(102, 102, 102));
 
-        jLabel9.setBackground(new java.awt.Color(51, 51, 51));
+        jLabel9.setBackground(new java.awt.Color(102, 102, 102));
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel9.setText("Staff Management");
+        jLabel9.setText("My Booking");
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -124,7 +164,12 @@ public class Profile_Page extends javax.swing.JFrame {
 
         jLabel11.setBackground(new java.awt.Color(51, 51, 51));
         jLabel11.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel11.setText("User Management");
+        jLabel11.setText("Feedback");
+        jLabel11.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel11MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -145,7 +190,12 @@ public class Profile_Page extends javax.swing.JFrame {
 
         jLabel12.setBackground(new java.awt.Color(51, 51, 51));
         jLabel12.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel12.setText("Booking Management");
+        jLabel12.setText("My Profile");
+        jLabel12.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel12MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
@@ -225,77 +275,64 @@ public class Profile_Page extends javax.swing.JFrame {
         jPanel6.setBounds(0, 0, 170, 470);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI Emoji", 1, 36)); // NOI18N
-        jLabel1.setText("Profile");
+        jLabel1.setText("Booking");
         jPanel2.add(jLabel1);
-        jLabel1.setBounds(440, 20, 120, 50);
+        jLabel1.setBounds(420, 20, 150, 50);
 
-        jLabel6.setFont(new java.awt.Font("Eras Demi ITC", 0, 12)); // NOI18N
-        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel6.setText("Staff ID");
-        jPanel2.add(jLabel6);
-        jLabel6.setBounds(340, 90, 60, 20);
+        Tbl_MyBooking.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
+            },
+            new String [] {
+                "Booking ID", "Start Date Time", "End Date Time"
+            }
+        ));
+        jScrollPane1.setViewportView(Tbl_MyBooking);
 
-        jLabel7.setFont(new java.awt.Font("Eras Demi ITC", 0, 12)); // NOI18N
-        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel7.setText("Full Name");
-        jPanel2.add(jLabel7);
-        jLabel7.setBounds(340, 130, 60, 20);
+        jPanel2.add(jScrollPane1);
+        jScrollPane1.setBounds(210, 170, 550, 230);
 
-        jLabel8.setFont(new java.awt.Font("Eras Demi ITC", 0, 12)); // NOI18N
-        jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel8.setText("Email");
-        jPanel2.add(jLabel8);
-        jLabel8.setBounds(340, 170, 40, 20);
+        CB_Filter.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "All", "Past", "Upcoming" }));
+        CB_Filter.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                CB_FilterItemStateChanged(evt);
+            }
+        });
+        CB_Filter.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                CB_FilterPropertyChange(evt);
+            }
+        });
+        jPanel2.add(CB_Filter);
+        CB_Filter.setBounds(210, 110, 130, 22);
 
-        jLabel4.setFont(new java.awt.Font("Eras Demi ITC", 0, 12)); // NOI18N
-        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel4.setText("User Type");
-        jPanel2.add(jLabel4);
-        jLabel4.setBounds(340, 210, 70, 20);
+        Txt_BID_ToDelete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Txt_BID_ToDeleteActionPerformed(evt);
+            }
+        });
+        jPanel2.add(Txt_BID_ToDelete);
+        Txt_BID_ToDelete.setBounds(390, 110, 180, 22);
 
-        jLabel2.setFont(new java.awt.Font("Eras Demi ITC", 0, 12)); // NOI18N
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel2.setText("Confirm Password");
+        Btn_Delete.setText("Cancel Booking");
+        Btn_Delete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Btn_DeleteActionPerformed(evt);
+            }
+        });
+        jPanel2.add(Btn_Delete);
+        Btn_Delete.setBounds(630, 110, 130, 23);
+
+        jLabel2.setText("Booking ID to Cancel:");
         jPanel2.add(jLabel2);
-        jLabel2.setBounds(340, 250, 110, 20);
+        jLabel2.setBounds(390, 90, 140, 16);
 
-        jLabel5.setFont(new java.awt.Font("Eras Demi ITC", 0, 12)); // NOI18N
-        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel5.setText("Password");
-        jPanel2.add(jLabel5);
-        jLabel5.setBounds(340, 300, 60, 20);
-
-        jCheckBox2.setFont(new java.awt.Font("Segoe UI Symbol", 0, 10)); // NOI18N
-        jCheckBox2.setText("Show Password");
-        jPanel2.add(jCheckBox2);
-        jCheckBox2.setBounds(450, 320, 110, 20);
-        jPanel2.add(txt_Password);
-        txt_Password.setBounds(450, 300, 170, 22);
-
-        jCheckBox1.setFont(new java.awt.Font("Segoe UI Symbol", 0, 10)); // NOI18N
-        jCheckBox1.setText("Show Password");
-        jPanel2.add(jCheckBox1);
-        jCheckBox1.setBounds(450, 270, 110, 20);
-        jPanel2.add(txt_ConfirmPassword);
-        txt_ConfirmPassword.setBounds(450, 250, 170, 22);
-
-        combo_UserType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "User Type", "Admin", "Scheduler", "Manager" }));
-        jPanel2.add(combo_UserType);
-        combo_UserType.setBounds(450, 210, 170, 22);
-        jPanel2.add(txt_Email);
-        txt_Email.setBounds(450, 170, 170, 22);
-        jPanel2.add(txt_FullName);
-        txt_FullName.setBounds(450, 130, 170, 22);
-        jPanel2.add(txt_StaffID);
-        txt_StaffID.setBounds(450, 90, 170, 22);
-
-        btn_UpdateProfile.setText("Update Profile");
-        jPanel2.add(btn_UpdateProfile);
-        btn_UpdateProfile.setBounds(620, 370, 110, 30);
-
-        btn_Save.setText("Save");
-        jPanel2.add(btn_Save);
-        btn_Save.setBounds(620, 370, 110, 30);
+        jLabel4.setText("Filter Booking:");
+        jPanel2.add(jLabel4);
+        jLabel4.setBounds(210, 90, 90, 16);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -322,6 +359,175 @@ public class Profile_Page extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jLabel12MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel12MouseClicked
+  
+        CustomerProfile_Page ProfileFrame = null;
+        try {
+            ProfileFrame = new CustomerProfile_Page(customerID);
+        } catch (Exception ex) {
+            Logger.getLogger(RaiseIssue_Page.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        ProfileFrame.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jLabel12MouseClicked
+
+    private void jLabel14MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel14MouseClicked
+        NewBooking_Page_2 BookingFrame2 = null;
+        try {
+            BookingFrame2 = new NewBooking_Page_2(customerID);
+        } catch (Exception ex) {
+            Logger.getLogger(RaiseIssue_Page.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        BookingFrame2.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jLabel14MouseClicked
+
+    private void jLabel11MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel11MouseClicked
+        RaiseIssue_Page RaiseIssueFrame = new RaiseIssue_Page(customerID);
+        RaiseIssueFrame.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jLabel11MouseClicked
+
+    private void Txt_BID_ToDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Txt_BID_ToDeleteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Txt_BID_ToDeleteActionPerformed
+
+    private void CB_FilterPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_CB_FilterPropertyChange
+
+    }//GEN-LAST:event_CB_FilterPropertyChange
+
+    private void CB_FilterItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_CB_FilterItemStateChanged
+        String CBox = (String) CB_Filter.getSelectedItem();
+        FILE_IO F = new FILE_IO();
+        
+        if ("All".equals(CBox)) {  // 用 .equals() 比较字符串内容
+            try {
+                // Catch the exception thrown by getBookingsByCustomerID
+                List<Booking_Class> bookings = F.getBookingsByCustomerID(customerID);
+                System.out.println("Number of bookings found: " + bookings.size());
+
+                DefaultTableModel model = (DefaultTableModel) Tbl_MyBooking.getModel();
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+                model.setRowCount(0);
+
+                // 将每个 Hall 数据添加到表格中
+                for (Booking_Class booking : bookings) {
+                    Object[] rowData = {
+                        booking.getBooking_ID(),
+                        booking.getStartDateTime().format(formatter),
+                        booking.getEndDateTime().format(formatter)
+                    };
+                    model.addRow(rowData);
+                    System.out.println("Added booking: " + booking);
+                }
+            } catch (Exception ex) {
+                // Log the exception
+                Logger.getLogger(ViewBooking_Page.class.getName()).log(Level.SEVERE, null, ex);
+                System.out.println("An error occurred: " + ex.getMessage());
+            }
+        }
+        if ("Past".equals(CBox)){
+            try {
+                // Get current date and time
+                LocalDateTime now = LocalDateTime.now();
+                List<Booking_Class> bookings = F.getBookingsByCustomerID(customerID);
+
+                List<Booking_Class> endedBookings = new ArrayList<>();
+
+                DefaultTableModel model = (DefaultTableModel) Tbl_MyBooking.getModel();
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+                model.setRowCount(0);
+
+                // Process each booking
+                for (Booking_Class booking : bookings) {
+                    // Compare the end date of the booking with the current date and time
+                    if (booking.getEndDateTime().isBefore(now)) {endedBookings.add(booking);}
+                }
+
+                // Display ongoing bookings in the table
+                for (Booking_Class booking : endedBookings) {
+                    Object[] rowData = {
+                        booking.getBooking_ID(),
+                        booking.getStartDateTime().format(formatter),
+                        booking.getEndDateTime().format(formatter)
+                    };
+                    model.addRow(rowData);
+                }
+
+
+            } catch (Exception ex) {
+                // Log the exception
+                Logger.getLogger(ViewBooking_Page.class.getName()).log(Level.SEVERE, null, ex);
+                System.out.println("An error occurred: " + ex.getMessage());
+            }
+
+        }
+        if ("Upcoming".equals(CBox)){
+            try {
+                // Get current date and time
+                LocalDateTime now = LocalDateTime.now();
+
+                List<Booking_Class> bookings = F.getBookingsByCustomerID(customerID);
+                List<Booking_Class> ongoingBookings = new ArrayList<>();
+
+                DefaultTableModel model = (DefaultTableModel) Tbl_MyBooking.getModel();
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+                model.setRowCount(0);
+
+                // Process each booking
+                for (Booking_Class booking : bookings) {
+                    // Compare the end date of the booking with the current date and time
+                    if (booking.getEndDateTime().isAfter(now)) {
+                        ongoingBookings.add(booking);
+                    }
+                }
+                // Display ongoing bookings in the table
+                for (Booking_Class booking : ongoingBookings) {
+                    Object[] rowData = {
+                        booking.getBooking_ID(),
+                        booking.getStartDateTime().format(formatter),
+                        booking.getEndDateTime().format(formatter)
+                    };
+                    model.addRow(rowData);
+                }
+
+            } catch (Exception ex) {
+                Logger.getLogger(ViewBooking_Page.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+        }
+    }//GEN-LAST:event_CB_FilterItemStateChanged
+
+    private void Btn_DeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_DeleteActionPerformed
+
+        String BookingID = Txt_BID_ToDelete.getText();
+        Booking_Class B = new Booking_Class();
+        FILE_IO F = new FILE_IO();
+        List<Booking_Class> bookings = null;
+        try {
+            bookings = F.getBookingsByCustomerID(customerID);
+        } catch (Exception ex) {
+            Logger.getLogger(ViewBooking_Page.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        boolean result = B.CheckBookingDelete(BookingID, bookings);
+        
+        if (result){
+            try {
+                F.deleteBookingByID(BookingID);
+                JOptionPane.showMessageDialog(null, "Your Booking has been canceled, Please enjoy our service");
+            } catch (IOException ex) {
+                Logger.getLogger(ViewBooking_Page.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (Exception ex) {
+                Logger.getLogger(ViewBooking_Page.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }else{
+            JOptionPane.showMessageDialog(null, "This order is less than three days from the start date and cannot be canceled");
+        }
+        
+        
+    }//GEN-LAST:event_Btn_DeleteActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -339,30 +545,32 @@ public class Profile_Page extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Profile_Page.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(NewBooking_Page.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Profile_Page.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(NewBooking_Page.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Profile_Page.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(NewBooking_Page.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Profile_Page.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(NewBooking_Page.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Profile_Page().setVisible(true);
+                new NewBooking_Page().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btn_Save;
-    private javax.swing.JButton btn_UpdateProfile;
-    private javax.swing.JComboBox<String> combo_UserType;
-    private javax.swing.JCheckBox jCheckBox1;
-    private javax.swing.JCheckBox jCheckBox2;
+    private javax.swing.JButton Btn_Delete;
+    private javax.swing.JComboBox<String> CB_Filter;
+    private javax.swing.JTable Tbl_MyBooking;
+    private javax.swing.JTextField Txt_BID_ToDelete;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -372,10 +580,6 @@ public class Profile_Page extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
@@ -385,10 +589,6 @@ public class Profile_Page extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
-    private javax.swing.JPasswordField txt_ConfirmPassword;
-    private javax.swing.JTextField txt_Email;
-    private javax.swing.JTextField txt_FullName;
-    private javax.swing.JPasswordField txt_Password;
-    private javax.swing.JTextField txt_StaffID;
+    private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 }
