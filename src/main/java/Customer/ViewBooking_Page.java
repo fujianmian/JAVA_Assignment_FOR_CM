@@ -301,6 +301,11 @@ public class ViewBooking_Page extends javax.swing.JFrame {
                 CB_FilterItemStateChanged(evt);
             }
         });
+        CB_Filter.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CB_FilterActionPerformed(evt);
+            }
+        });
         CB_Filter.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
             public void propertyChange(java.beans.PropertyChangeEvent evt) {
                 CB_FilterPropertyChange(evt);
@@ -527,6 +532,10 @@ public class ViewBooking_Page extends javax.swing.JFrame {
         
         
     }//GEN-LAST:event_Btn_DeleteActionPerformed
+
+    private void CB_FilterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CB_FilterActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_CB_FilterActionPerformed
 
     /**
      * @param args the command line arguments

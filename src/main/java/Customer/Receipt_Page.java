@@ -8,8 +8,10 @@ import Class_File.Booking_Class;
 import Class_File.CustomerClass;
 import Class_File.FILE_IO;
 import java.io.IOException;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Arrays;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -29,13 +31,18 @@ public class Receipt_Page extends javax.swing.JFrame {
         Receipt_Page.Data = data;
         initComponents();
         
-        
-        
+        System.out.println(Receipt_Page.Data);
         
         String[] values = Receipt_Page.Data.split(",");
         
-        Booking_Class B = new Booking_Class();
+        if (values.length < 7) {
+            throw new IllegalArgumentException("Data does not contain enough information.");
+        }
         
+        Booking_Class B = new Booking_Class();
+        LocalDate today = LocalDate.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        String formattedDate = today.format(formatter);
         
         String remark = (values.length == 7) ? values[7] : "";
         
@@ -53,12 +60,38 @@ public class Receipt_Page extends javax.swing.JFrame {
         Lbl_DispPrice.setText(cost);
         Lbl_DispRemark.setText(remark);
         
+//        System.out.println("123");
+        
         FILE_IO F = new FILE_IO();
         try {
-                F.TOWriteFile("Booking.txt", data);
-            } catch (IOException ex) {
-                Logger.getLogger(NewBooking_Page_2.class.getName()).log(Level.SEVERE, null, ex);
-            }
+            // for booking file
+            String dataToWrite = data.substring(0, data.lastIndexOf(","));
+            F.TOWriteFile("Booking.txt", dataToWrite);
+            
+//            System.out.println("Data to write to Booking.txt: " + dataToWrite);
+//            
+//            System.out.println("Values array: " + Arrays.toString(values));
+//            System.out.println("Values length: " + values.length);
+             
+             
+            String paymentID = F.getNextPaymentID();
+//            System.out.println("Payment ID: " + paymentID);
+//            System.out.println("Customer ID: " + values[1]);
+//            System.out.println("Booking ID: " + values[0]);
+//            System.out.println("Formatted Date: " + formattedDate);
+//            System.out.println("Cost: " + cost);
+//            System.out.println("Payment Method: " + values[values.length - 1]);
+
+            // for payment file
+            String newFileData = String.join(",", F.getNextPaymentID(), values[1], values[0], formattedDate, cost, values[values.length - 1]);
+            System.out.println(newFileData);
+//            F.TOWriteFile("Sales.txt", newFileData); 
+            System.out.println("789");
+        } catch (IOException ex) {
+            Logger.getLogger(NewBooking_Page_2.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        System.out.println(Receipt_Page.Data);
     }
 
     /**

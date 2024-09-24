@@ -145,34 +145,37 @@ public class Payment_Page extends javax.swing.JFrame {
     private void Btn_CashActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_CashActionPerformed
     try {
         CustomerClass C = new CustomerClass();
-        boolean paid = C.makepayment();
+        String paid = C.makepayment(Payment_Page.Data);
+        String[] values = paid.split(",");
 
-        if(paid){
-            Receipt_Page ReceiptFrame = new Receipt_Page(Payment_Page.Data);
+        if(!values[values.length - 1].equalsIgnoreCase("Failure")){
+            System.out.println("HIIHI");
+            Receipt_Page ReceiptFrame = new Receipt_Page(paid);
             ReceiptFrame.setVisible(true);
             this.dispose();
         }
     } catch (Exception e) {
         e.printStackTrace();
-        javax.swing.JOptionPane.showMessageDialog(this, "An error occurred: " + e.getMessage());
+        javax.swing.JOptionPane.showMessageDialog(this, "" + e.getMessage());
     }
     
     }//GEN-LAST:event_Btn_CashActionPerformed
 
     private void Btn_CreditCardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_CreditCardActionPerformed
-    try {
-        CustomerClass C = new CustomerClass();
-        boolean paid = C.makepayment(Txt_CreditNo.getText());
+        try {
+            CustomerClass C = new CustomerClass();
+            String paid = C.makepayment(Txt_CreditNo.getText(),Payment_Page.Data);
+            String[] values = paid.split(",");
 
-        if(paid){
-            Receipt_Page ReceiptFrame = new Receipt_Page(Payment_Page.Data);
-            ReceiptFrame.setVisible(true);
-            this.dispose();
+            if(!values[values.length - 1].equalsIgnoreCase("Failure")){
+                Receipt_Page ReceiptFrame = new Receipt_Page(paid);
+                ReceiptFrame.setVisible(true);
+                this.dispose();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            javax.swing.JOptionPane.showMessageDialog(this, "Credit card no haven't fill in");
         }
-    } catch (Exception e) {
-        e.printStackTrace();
-        javax.swing.JOptionPane.showMessageDialog(this, "An error occurred: " + e.getMessage());
-    }
     
     }//GEN-LAST:event_Btn_CreditCardActionPerformed
 

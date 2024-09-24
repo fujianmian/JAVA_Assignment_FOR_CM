@@ -1,0 +1,6 @@
+M001,HA,ha@gmail.com,000000,M
+M002,addasd,ha@gmail.com,123456,A
+S003,HA,ha@gmail.com,000000,S
+M004,HA,ha@gmail.com,000000,M
+M007,HA,ha@gmail.com,000000,M
+S004,HA,ha@gmail.com,000000,S

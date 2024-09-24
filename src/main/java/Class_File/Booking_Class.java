@@ -128,15 +128,10 @@ public class Booking_Class {
         List<Booking_Class> bookings = F.getAllBooking();
         List<HallClass> halls = F.getAllHall();
 
-//        Booking_Class selectedBooking = null;
+
         HallClass selectedHall = null;
 
-        // Debugging: Print all bookings and halls
 
-//        System.out.println("Available halls:");
-//        for (HallClass hall : halls) {
-//            System.out.println("Hall ID: " + hall.getHall_ID());
-//        }
 
 
         // Find the hall by ID

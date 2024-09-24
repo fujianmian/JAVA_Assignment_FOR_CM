@@ -5,6 +5,7 @@
 package com.mycompany.java_assignemt_1;
 import Class_File.CustomerClass;
 import Class_File.FILE_IO;
+import Class_File.ManagerClass;
 import Customer.NewBooking_Page_2;
 import javax.swing.JPasswordField;
 
@@ -199,6 +200,7 @@ public class User_Login extends javax.swing.JFrame {
         String UserID;
         String UserPass;
         boolean found = false;
+        FILE_IO F = new FILE_IO();
             
         UserID = TXT_LoginID.getText();
         UserPass = TXT_LoginPassword.getText();
@@ -207,23 +209,33 @@ public class User_Login extends javax.swing.JFrame {
         
         try {
             found = customer.FindSpecificCus(UserID, UserPass);
+            System.out.println(found);
+            if(!found){found = F.validateCredentials(UserID, UserPass);
+                System.out.println(found);
+            }
+            
         } catch (Exception ex) {
             Logger.getLogger(User_Login.class.getName()).log(Level.SEVERE, null, ex);
         }
          
         if(found){
-            String UserTYPE = null;
-            try {
-                UserTYPE = customer.getUserTYPE(UserID);
-            } catch (Exception ex) {
-                Logger.getLogger(User_Login.class.getName()).log(Level.SEVERE, null, ex);
-            }
+            String UserTYPE = Character.toString(UserID.charAt(0));
+
             
             switch(UserTYPE){
                 case "C":
                     try {
-                        NewBooking_Page_2 BookingFrame2 = new NewBooking_Page_2(UserID);
-                        BookingFrame2.setVisible(true);
+                        CustomerClass User = F.getCustomerByID(UserID);
+                        User.login(UserID);
+                        this.dispose();
+                        break;
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                case "M":
+                    try {
+                        ManagerClass User = F.getManagerByID(UserID);
+                        User.login(UserID);
                         this.dispose();
                         break;
                     } catch (Exception e) {
@@ -231,6 +243,7 @@ public class User_Login extends javax.swing.JFrame {
                     }
             }
             
+ 
         }
     }//GEN-LAST:event_BTN_LoginActionPerformed
 

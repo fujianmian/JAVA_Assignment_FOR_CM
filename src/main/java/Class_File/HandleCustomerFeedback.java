@@ -27,6 +27,7 @@ public class HandleCustomerFeedback implements HandleCusComment{
         this.Content = Content;
     }
 
+    
     public HandleCustomerFeedback() {
     }
     
@@ -34,6 +35,10 @@ public class HandleCustomerFeedback implements HandleCusComment{
 
     public String getFeedback_ID() {
         return Feedback_ID;
+    }
+
+    public CustomerClass getIssueCustomer() {
+        return IssueCustomer;
     }
     
     
@@ -43,5 +48,23 @@ public class HandleCustomerFeedback implements HandleCusComment{
         String result = String.join(",", ID, Title, CustID, FeedbackDateTime, HallID, Content);
         return result;
     }
+
+    public String getTitle() {
+        return Title;
+    }
+
+    public LocalDateTime getFeedbackDateTime() {
+        return FeedbackDateTime;
+    }
+
+    public HallClass getIssue_hall() {
+        return Issue_hall;
+    }
+
+    public String getContent() {
+        return Content;
+    }
+    
+    
     
 }

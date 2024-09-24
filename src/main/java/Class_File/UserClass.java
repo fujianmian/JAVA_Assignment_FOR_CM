@@ -7,12 +7,13 @@ package Class_File;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.util.List;
+import javax.swing.JFrame;
 
 /**
  *
  * @author junyong is DaShuaiGe
  */
-public abstract class UserClass {
+public abstract class UserClass extends JFrame{
     
     private String UserID;
     private String Name;
@@ -27,7 +28,7 @@ public abstract class UserClass {
     }
     
     
-    public abstract void updateCustomerByID(String customerID, String newName, String newEmail, String newPassword) throws Exception;
+//    public abstract void updateCustomerByID(String customerID, String newName, String newEmail, String newPassword) throws Exception;
     
     
     @Override
@@ -35,7 +36,7 @@ public abstract class UserClass {
         return UserID;
     }
     
-    public abstract void login();
+    public abstract void login(String UserID);
 
     public String getUserID() {
         return UserID;

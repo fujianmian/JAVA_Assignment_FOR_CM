@@ -367,6 +367,8 @@ public class NewBooking_Page_2 extends javax.swing.JFrame {
         jLabel19.setText("Remark");
         jPanel2.add(jLabel19);
         jLabel19.setBounds(210, 370, 90, 20);
+
+        TXT_RemarkforBooking.setText("-");
         jPanel2.add(TXT_RemarkforBooking);
         TXT_RemarkforBooking.setBounds(210, 390, 170, 22);
 

@@ -61,7 +61,7 @@ public class RaiseIssue_Page extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         txt_IssueDesc = new javax.swing.JTextField();
         txt_IssueTittle = new javax.swing.JTextField();
-        btn_RaiseIssue = new javax.swing.JButton();
+        btn_RaiseFeedback = new javax.swing.JButton();
         jLabel15 = new javax.swing.JLabel();
         txt_IssueHallID = new javax.swing.JTextField();
         btn_RaiseIssue1 = new javax.swing.JButton();
@@ -279,14 +279,14 @@ public class RaiseIssue_Page extends javax.swing.JFrame {
         jPanel2.add(txt_IssueTittle);
         txt_IssueTittle.setBounds(290, 70, 160, 22);
 
-        btn_RaiseIssue.setText("Giving My Feedback");
-        btn_RaiseIssue.addActionListener(new java.awt.event.ActionListener() {
+        btn_RaiseFeedback.setText("Giving My Feedback");
+        btn_RaiseFeedback.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_RaiseIssueActionPerformed(evt);
+                btn_RaiseFeedbackActionPerformed(evt);
             }
         });
-        jPanel2.add(btn_RaiseIssue);
-        btn_RaiseIssue.setBounds(290, 370, 150, 30);
+        jPanel2.add(btn_RaiseFeedback);
+        btn_RaiseFeedback.setBounds(290, 370, 150, 30);
 
         jLabel15.setFont(new java.awt.Font("Eras Demi ITC", 0, 12)); // NOI18N
         jLabel15.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -385,7 +385,7 @@ public class RaiseIssue_Page extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_IssueHallIDActionPerformed
 
-    private void btn_RaiseIssueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_RaiseIssueActionPerformed
+    private void btn_RaiseFeedbackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_RaiseFeedbackActionPerformed
         String Title = txt_IssueTittle.getText();
         FILE_IO F = new FILE_IO();
         Booking_Class B = new Booking_Class();
@@ -431,7 +431,7 @@ public class RaiseIssue_Page extends javax.swing.JFrame {
         }
         
         
-    }//GEN-LAST:event_btn_RaiseIssueActionPerformed
+    }//GEN-LAST:event_btn_RaiseFeedbackActionPerformed
 
     private void btn_RaiseIssue1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_RaiseIssue1ActionPerformed
         String Title = txt_IssueTittle.getText();
@@ -453,7 +453,7 @@ public class RaiseIssue_Page extends javax.swing.JFrame {
         }
         if (CustomerHaveBooking){
             try {
-                CusID = F.getNextFeedbackID();
+                CusID = F.getNextIssueID();
             } catch (Exception ex) {
                 Logger.getLogger(RaiseIssue_Page.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -518,7 +518,7 @@ public class RaiseIssue_Page extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btn_RaiseIssue;
+    private javax.swing.JButton btn_RaiseFeedback;
     private javax.swing.JButton btn_RaiseIssue1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;

@@ -6,6 +6,7 @@ package Class_File;
  */
 
 
+import Customer.NewBooking_Page_2;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileReader;
@@ -37,7 +38,8 @@ public class CustomerClass extends UserClass implements Payment_Inheritant{
     
     
 
-    public String getType() {
+
+    public String getCustomerType() {
         return type;
     }
 
@@ -45,7 +47,6 @@ public class CustomerClass extends UserClass implements Payment_Inheritant{
         this.type = type;
     }
     
-    @Override
     public void updateCustomerByID(String customerID, String newName, String newEmail, String newPassword) throws Exception {
         // Step 1: Read all customers from the file
         FILE_IO F = new FILE_IO();
@@ -131,28 +132,33 @@ public class CustomerClass extends UserClass implements Payment_Inheritant{
     }
     
     @Override
-    public boolean makepayment(String creditcard_No){
+    public String makepayment(String creditcard_No,String Data){
+        
         if(creditcard_No.equals("")){
-            return false;
+            String Processed_Data = Data + ",Card";
+            return Processed_Data;
         }
-        return true;
+        return "Failure";
     }
     
     @Override
-    public boolean makepayment(){
-        boolean success = true; // Simulate payment success
-        if (!success) {
-            try {
-                throw new Exception("Payment failed");
-            } catch (Exception ex) {
-                Logger.getLogger(CustomerClass.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-        return success;
+    public String makepayment(String Data){
+        String Processed_Data = Data + ",Cash";
+
+        return Processed_Data;
     }
     
     @Override
-    public void login(){}
+    public void login(String Customer_ID){
+        try {
+            NewBooking_Page_2 BookingFrame2 = new NewBooking_Page_2(Customer_ID);
+            BookingFrame2.setVisible(true);
+            this.setVisible(false);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    
+    }
     
     
     

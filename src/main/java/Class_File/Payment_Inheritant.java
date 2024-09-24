@@ -9,6 +9,6 @@ package Class_File;
  * @author junyong is DaShuaiGe
  */
 public interface Payment_Inheritant {
-    boolean makepayment(String creditcard_No);
-    boolean makepayment();
+    String makepayment(String creditcard_No, String Data);
+    String makepayment(String Data);
 }
